@@ -2,6 +2,7 @@
 
 import { getProducts } from "@/service/getProducts";
 import { useQuery } from "@tanstack/react-query";
+import ProductCard from "./ProductCard";
 
 type IProductsData = {
   products: {
@@ -43,9 +44,17 @@ export default function Products(props: IProductsData) {
     );
   }
   return (
-    <div>
+    <div className="grid w-full grid-cols-2 md:grid-cols-4 md:grid-rows-2 gap-12">
       {data.products.map((item) => (
-        <p key={item.id}> {item.name}</p>
+        <ProductCard
+          key={item.id}
+          brand={item.brand}
+          description={item.description}
+          id={item.id}
+          name={item.name}
+          photo={item.photo}
+          price={item.price}
+        />
       ))}
     </div>
   );
