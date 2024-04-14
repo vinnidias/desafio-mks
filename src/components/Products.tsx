@@ -27,7 +27,6 @@ export default function Products(props: IProductsData) {
     initialData: props.products,
   });
 
-  console.log("response: ", data);
   if (isLoading) {
     return (
       <div>
@@ -44,10 +43,10 @@ export default function Products(props: IProductsData) {
     );
   }
   return (
-    <div className="grid w-full grid-cols-2 md:grid-cols-4 md:grid-rows-2 gap-12">
-      {data.products.map((item) => (
+    <div className="grid w-full grid-cols-2 md:grid-cols-4 md:grid-rows-2 gap-12 ">
+      {data.products.map((item, index) => (
         <ProductCard
-          key={item.id}
+          key={index}
           brand={item.brand}
           description={item.description}
           id={item.id}
