@@ -7,7 +7,7 @@ export default async function Home() {
   const initialData = await getProducts();
 
   return (
-    <div className="flex flex-col items-center p-16 px-64 min-h-[calc(100vh-132px)] 3xl:pt-32 3xl:px-128 ">
+    <div className="flex flex-col items-center px-16 p-16 2xl:px-64 min-h-[calc(100vh-132px)] 3xl:pt-32 3xl:px-128 ">
       <Products products={initialData} />
     </div>
   );
