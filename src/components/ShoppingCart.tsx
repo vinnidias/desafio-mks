@@ -1,19 +1,14 @@
-"use client"
+"use client";
 import Image from "next/image";
-
 import { useCartContext } from "@/context/cartContext";
+import { motion } from "framer-motion";
+
 import cartIcont from "../assets/Vector.svg";
 import CartProductCard from "./CartProductCard";
-import { useEffect, useState } from "react";
 
 export default function ShoppingCart() {
-  const {
-    isOpen,
-    setIsOpen,
-    selectedProducts,
-    totalProducts,
-    totalPurchase,
-  } = useCartContext();
+  const { isOpen, setIsOpen, selectedProducts, totalProducts, totalPurchase } =
+    useCartContext();
 
   return (
     <>
@@ -24,7 +19,12 @@ export default function ShoppingCart() {
         <Image alt="ícone do carrinho" src={cartIcont} /> {totalProducts}{" "}
       </button>
       {isOpen && (
-        <div className="flex flex-col w-[30%] absolute top-0 right-0 min-h-[100%] justify-between bg-[#0F52BA] shadow-xl">
+        <motion.div
+          initial={{ x: 100 }}
+          whileInView={{ x: 0 }}
+
+          className="flex flex-col min-w-[80%] md:min-w-[40%] 2xl:min-w-[30%] absolute top-0 right-0 min-h-screen justify-between bg-[#0F52BA] shadow-xl"
+        >
           <div className="flex justify-between p-12 pr-4">
             <p className="text-white font-bold text-2xl text-clip overflow-hidden w-36">
               Carrinho de compras
@@ -36,7 +36,7 @@ export default function ShoppingCart() {
               X
             </button>
           </div>
-          <div className="flex flex-col gap-12 w-full min-h-[60vh] max-h-[60vh] px-12 overflow-y-auto">
+          <div className="flex flex-col gap-12 w-full min-h-[60vh] max-h-[60vh] px-8 overflow-y-auto">
             {selectedProducts.map((product, index) => (
               <CartProductCard
                 key={index}
@@ -61,7 +61,7 @@ export default function ShoppingCart() {
               Finalizar Compra
             </button>
           </div>
-        </div>
+        </motion.div>
       )}
     </>
   );
