@@ -37,10 +37,8 @@ export function CartWrapper({ children }: { children: ReactNode }) {
   const [totalPurchase, setTotaltPurchase] = useState(0);
 
   const mapProducts = selectedProducts.map((item) => item.amount);
-  console.log("map", mapProducts);
 
   useEffect(() => {
-    console.log("entrou no effect");
     const totalAmounts = selectedProducts.map((item) => item.amount);
     if (totalAmounts.length > 0) {
       const sumAmount = totalAmounts.reduce(
@@ -56,9 +54,6 @@ export function CartWrapper({ children }: { children: ReactNode }) {
       setTotaltPurchase(sumAllProductsPice);
     }
   }, [selectedProducts, totalProducts, isOpen, totalPurchase, mapProducts]);
-
-  console.log("context: ", selectedProducts);
-  console.log("total: ", totalPurchase, totalProducts);
 
   return (
     <CartContext.Provider
