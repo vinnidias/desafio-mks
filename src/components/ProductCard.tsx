@@ -18,7 +18,7 @@ export default function ProductCard(props: IProductProps) {
   const { selectedProducts, setSelectedProducts, setIsOpen } = useCartContext();
   const [amount, setAmount] = useState(1);
   return (
-    <div className="flex flex-col max-w-54 max-h-72 lg:max-w-72 lg:max-h-104 items-center justify-between pt-4 shadow-lg rounded-md ">
+    <div className="flex flex-col max-w-52 max-h-76 lg:max-w-72 lg:max-h-104 items-center justify-between pt-4 shadow-xl rounded-md">
       <Image alt="foto do produto" src={photo} width={110} height={138} />
 
       <div className="flex w-full justify-between px-4 items-end">
