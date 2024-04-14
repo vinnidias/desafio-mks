@@ -18,6 +18,38 @@ export default function CartProductCard(props: ICartProductProps) {
   const [totalAmount, setTotalAmount] = useState(0);
   const [increment, setIncrement] = useState(false);
 
+  const handleRemoveItem = () => {
+    setIncrement(!increment);
+    if (totalAmount > 1) {
+      const isSelected = selectedProducts.findIndex((value) => value.id === id);
+      selectedProducts.splice(isSelected, 1, {
+        id,
+        name,
+        price,
+        photo,
+        amount: selectedProducts[isSelected].amount - 1,
+      });
+
+      setSelectedProducts(selectedProducts);
+    } else {
+      return;
+    }
+  };
+
+  const handleAddItem = () => {
+    setIncrement(!increment);
+    const isSelected = selectedProducts.findIndex((value) => value.id === id);
+    selectedProducts.splice(isSelected, 1, {
+      id,
+      name,
+      price,
+      photo,
+      amount: selectedProducts[isSelected].amount + 1,
+    });
+
+    setSelectedProducts(selectedProducts);
+  };
+
   useEffect(() => {
     const productIndex = selectedProducts.findIndex((value) => value.id === id);
     setTotalAmount(selectedProducts[productIndex].amount);
@@ -25,56 +57,26 @@ export default function CartProductCard(props: ICartProductProps) {
 
   return (
     <div className="flex items-center justify-between rounded-md p-4 bg-white">
-      <Image alt="foto da imagem" src={photo} width={80} height={80} />
-      <p>{name}</p>
-      <span>
-        {" "}
-        <button
-          onClick={() => {
-            setIncrement(!increment);
-            if (totalAmount > 1) {
-              const isSelected = selectedProducts.findIndex(
-                (value) => value.id === id
-              );
-              selectedProducts.splice(isSelected, 1, {
-                id,
-                name,
-                price,
-                photo,
-                amount: selectedProducts[isSelected].amount - 1,
-              });
+      <div className="flex gap-4 items-center w-52">
+        <Image alt="foto da imagem" src={photo} width={80} height={80} />
+        <p>{name}</p>
+      </div>
 
-              setSelectedProducts(selectedProducts);
-            } else {
-              return;
-            }
-          }}
-        >
-          {" "}
-          -{" "}
-        </button>{" "}
-        qtd: {totalAmount}{" "}
-        <button
-          onClick={() => {
-            setIncrement(!increment);
-            const isSelected = selectedProducts.findIndex(
-              (value) => value.id === id
-            );
-            selectedProducts.splice(isSelected, 1, {
-              id,
-              name,
-              price,
-              photo,
-              amount: selectedProducts[isSelected].amount + 1,
-            });
+      <div className="flex flex-col self-start">
+        <p>Qtd:</p>
+        <span className="border flex min-w-full px-4 py-1 gap-2 rounded-lg font-semibold">
+          <button className="border-r pr-2" onClick={handleRemoveItem}>
+            {" "}
+            -
+          </button>{" "}
+          {totalAmount}
+          <button className="border-l pl-2" onClick={handleAddItem}>
+            +
+          </button>
+        </span>
+      </div>
 
-            setSelectedProducts(selectedProducts);
-          }}
-        >
-          +
-        </button>
-      </span>
-      <span>R${price.replace(".", ",")}</span>
+      <span className="self-center font-semibold">R${price.replace(".", ",")}</span>
     </div>
   );
 }
