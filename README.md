@@ -1,36 +1,25 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Desafio MKS Sistemas.
 
-## Getting Started
+Projeto criado com NextJS 14 para integração com a API fornecida pelo desafio. <br>
 
-First, run the development server:
+Está hospedado na Vercel e pode ser acessado [CLICANDO AQUI](https://desafio-mks-three.vercel.app/)! 
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Fluxo do APP
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+   - O App faz uma requisição incial e cria uma lista de produto;
+   - Cada produto é exibido em um card e pode ser adicionado ao carrinho clicando no botão comprar;
+   - A tela possui um botão com carrinho na barra de navegação para acessar o modal do carrinho;
+   - Dentro do carrinho é exibido os cards de cada produto, podendo alterar suas quantidades e/ou removê-los do carrinho; 
+   - O carrinho também exibe o valor total da compra;
+   
+## Bibliotecas e tecnologias
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+  - [NextJs](https://nextjs.org/)
+  - [ReactJs](https://reactjs.org/)
+  - [Typescript](https://www.typescriptlang.org/)
+  - [Tailwind CSS](https://tailwindcss.com/docs/installation)
+  - [Axios](https://axios-http.com/ptbr/docs/intro)
+  - [TanStackQuery](https://tanstack.com/query/latest/docs/framework/react/overview)
+  - [Axios](https://axios-http.com/ptbr/docs/intro)
+  - [Framer Motion](https://www.framer.com/motion/)
+  - [Vercel](https://vercel.com/)
