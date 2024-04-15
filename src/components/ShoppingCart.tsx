@@ -36,7 +36,7 @@ export default function ShoppingCart() {
               X
             </button>
           </div>
-          <div className="flex flex-col gap-12 w-full min-h-[60vh] max-h-[60vh] px-8 overflow-y-auto">
+          <div className="flex flex-col gap-12 w-full min-h-[60vh] max-h-[60vh] px-8 pt-4 overflow-y-auto">
             {selectedProducts.map((product, index) => (
               <CartProductCard
                 key={index}

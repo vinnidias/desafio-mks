@@ -50,13 +50,26 @@ export default function CartProductCard(props: ICartProductProps) {
     setSelectedProducts(selectedProducts);
   };
 
+  const handleDeleteItem = () => {
+    const isSelected = selectedProducts.findIndex((value) => value.id === id);
+    selectedProducts.splice(isSelected, 1);
+
+    setSelectedProducts(selectedProducts);
+  };
+
   useEffect(() => {
     const productIndex = selectedProducts.findIndex((value) => value.id === id);
     setTotalAmount(selectedProducts[productIndex].amount);
   }, [selectedProducts, increment, id]);
 
   return (
-    <div className="flex items-center justify-between rounded-md p-4 bg-white">
+    <div className="relative flex items-center justify-between rounded-md p-4 bg-white">
+      <button
+        onClick={handleDeleteItem}
+        className="absolute top-0 right-0 mt-[-1%] mr-[-1%] flex items-center justify-center w-6 h-6 bg-black text-white font-semibold rounded-[50%]"
+      >
+        X
+      </button>
       <div className="flex gap-4 items-center w-52">
         <Image alt="foto da imagem" src={photo} width={80} height={80} />
         <p>{name}</p>
@@ -76,7 +89,9 @@ export default function CartProductCard(props: ICartProductProps) {
         </span>
       </div>
 
-      <span className="self-center font-semibold">R${price.replace(".", ",")}</span>
+      <span className="self-center font-semibold">
+        R${price.replace(".", ",")}
+      </span>
     </div>
   );
 }
